@@ -1,0 +1,39 @@
+type Mutation {
+    user: UserMutations
+}
+
+type Query {
+    user: UserQueries
+}
+
+type UserMutations
+{
+    createUser(nickName: String!): Boolean!
+    createPost(userCreatePostInput:  UserCreatePostInput!): UserCreatePostResponse!
+    likePost(postId: ID!): Boolean!
+
+}
+
+type UserQueries
+{
+    getUserPosts(userId: ID!): [Post]
+}
+
+input UserCreatePostInput
+{
+    userId: ID!,
+    comment: String!
+}
+
+type UserCreatePostResponse
+{
+    data: Post
+    isSuccess: Boolean!
+}
+
+type Post {
+    postId: ID!
+    comment: String!
+    likes: Int!
+
+}
